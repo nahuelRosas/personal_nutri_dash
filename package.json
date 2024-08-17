@@ -4,10 +4,13 @@
   "scripts": {
     "build": "turbo build",
     "dev": "pnpm run docker:run && turbo dev",
-    "lint": "turbo lint",
+    "lint": "pnpm run format:write && turbo lint --filter=!./apps/*",
     "test": "turbo test",
+    "test:cov": "turbo test:cov",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "clean": "turbo run clean && rimraf dist .turbo node_modules pnpm-lock.yaml",
+    "format:write": "prettier --write \"**/*.{ts,tsx,md,json, html, css}\" --cache",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,json, html, css}\" --cache",
     "docker:run": "turbo run docker:run"
   },
   "devDependencies": {
