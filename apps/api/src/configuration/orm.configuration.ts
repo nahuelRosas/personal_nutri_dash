@@ -9,6 +9,7 @@ dotenv.config();
 
 const baseOptions: DataSourceOptions = {
   type: 'mysql',
+  driver: require('mysql2'),
   host: process.env.DB_HOST,
   port: +process.env.DB_PORT,
   username: process.env.DB_USERNAME,
@@ -19,6 +20,7 @@ const baseOptions: DataSourceOptions = {
 
 const automatedTests: DataSourceOptions = {
   type: 'better-sqlite3',
+  driver: require('better-sqlite3'),
   database: `./data/tests.${Math.random()}.db`,
   synchronize: true,
   dropSchema: false,
@@ -44,5 +46,4 @@ export default new DataSource({
     join(__dirname, '../modules/**/infrastructure/persistence/*.schema.ts'),
   ],
   migrations: ['./data/migrations/*.ts'],
-  driver: require('mysql2'),
 });
