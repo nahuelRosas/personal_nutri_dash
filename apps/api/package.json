@@ -24,7 +24,7 @@
     "migration:generate": "cross-var npm run typeorm migration:generate ./data/migrations/$npm_config_name",
     "migration:run": "npm run typeorm -- migration:run",
     "migration:revert": "npm run typeorm -- migration:revert",
-    "clean": "rimraf dist .turbo node_modules pnpm-lock.yaml",
+    "clean": "rimraf dist .turbo node_modules pnpm-lock.yaml ./coverage",
     "clean:database": "sudo rm -f -r ./data/mysql",
     "docker:run": "docker compose down && docker compose up -d"
   },

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "rimraf dist .turbo node_modules"
+    "clean": "rimraf dist .turbo node_modules .next pnpm-lock.yaml"
   },
   "dependencies": {
     "@repo/typescript-config": "workspace:*",
