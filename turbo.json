@@ -33,6 +33,12 @@
       "inputs": ["$TURBO_DEFAULT$", ".env*", "**/.env*"],
       "cache": false,
       "persistent": false
+    },
+    "test:cov": {
+      "dependsOn": ["^test:cov"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*", "**/.env*"],
+      "cache": false,
+      "persistent": false
     }
   }
 }
