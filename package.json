@@ -1,0 +1,24 @@
+{
+  "name": "personal_nutri_dash",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "pnpm run docker:run && turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "clean": "turbo run clean && rimraf dist .turbo node_modules pnpm-lock.yaml",
+    "docker:run": "turbo run docker:run"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "turbo": "^2.0.14",
+    "typescript": "^5.4.5"
+  },
+  "packageManager": "pnpm@8.15.6",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "rimraf": "^6.0.1"
+  }
+}
