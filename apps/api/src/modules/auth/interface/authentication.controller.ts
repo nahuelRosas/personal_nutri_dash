@@ -1,7 +1,6 @@
 import { Body, Controller, Patch, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
-import { ChangePasswordDto } from '@/common/cognito/application/dto/change_password.dto';
 import { PasswordResetConfirmationDto } from '@/common/cognito/application/dto/password_reset_confirmation.dto';
 import { PasswordResetRequestDto } from '@/common/cognito/application/dto/password_reset_request.dto';
 import { ResendConfirmationDetailsDto } from '@/common/cognito/application/dto/resend_confirmation_details.dto';
@@ -15,9 +14,10 @@ import { User } from '@/modules/user/domain/user.domain';
 
 import { AuthenticationService } from '../application/service/authentication.service';
 import { AuthType } from '../domain/auth_type.enum';
-import type { LoginResponse } from '../application/interface/authentication.service.interface';
+import { LoginResponse } from '../application/interface/authentication.service.interface';
 import { CurrentUser } from '@/modules/user/application/decorator/current_user.decorator';
 import { AccessToken } from '../application/decorator/accessToken.decorator';
+import { ChangePasswordDto } from '../application/dto/change_password.dto';
 
 @Controller('auth')
 @ApiTags('auth')
@@ -84,6 +84,7 @@ export class AuthenticationController {
     return this.authenticationService.refreshUserSession(sessionRefreshDetails);
   }
 
+  @Auth(AuthType.Bearer)
   @Patch('/change-password')
   async changePassword(
     @Body() changePassword: ChangePasswordDto,
