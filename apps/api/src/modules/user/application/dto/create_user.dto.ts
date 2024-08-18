@@ -1,4 +1,11 @@
-import { IsEmail, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { NutrigeneticParameter } from '@/modules/nutritionalRecommendation/domain/domain';
+import {
+  IsEmail,
+  IsEnum,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 
 export class CreateUserDto {
   @IsEmail({}, { message: 'invalid email address.' })
@@ -8,4 +15,8 @@ export class CreateUserDto {
   @IsOptional()
   @IsString()
   externalId?: string;
+
+  @IsOptional()
+  @IsEnum(NutrigeneticParameter, { each: true })
+  nutrigeneticParameters?: NutrigeneticParameter[];
 }

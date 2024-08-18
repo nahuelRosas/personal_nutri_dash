@@ -9,6 +9,7 @@ import { ResilienceModule } from 'nestjs-resilience';
 import { CommonModule } from './common/common.module';
 import { AuthenticationModule } from './modules/auth/authentication.module';
 import { UserModule } from './modules/user/user.module';
+import { NutritionalFoodRecommendationModule } from './modules/nutritionalRecommendation/nutritionalFoodRecommendation.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { UserModule } from './modules/user/user.module';
     AuthenticationModule,
     CommonModule,
     UserModule,
+    NutritionalFoodRecommendationModule,
   ],
   controllers: [],
   providers: [],

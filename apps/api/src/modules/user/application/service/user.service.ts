@@ -15,9 +15,11 @@ import {
   USER_REPOSITORY,
 } from '../interfaces/user.repository.interfaces';
 import { ServiceMessage } from '../message/user.message';
+import { NutrigeneticParameter } from '@/modules/nutritionalRecommendation/domain/domain';
+import { IUserService } from '../interfaces/user.service.interfaces';
 
 @Injectable()
-export class UserService {
+export class UserService implements IUserService {
   constructor(
     @Inject(RESPONSE_SERVICE)
     private readonly responseService: IResponseService,
@@ -109,6 +111,20 @@ export class UserService {
         message: ServiceMessage.FOUND,
         payload: users,
       });
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  async getNutrigeneticParameters(
+    user: User,
+  ): Promise<NutrigeneticParameter[]> {
+    try {
+      const response = await this.userRepository.findByEmail(user.email);
+      if (!response) {
+        throw new NotFoundException(ServiceMessage.NOT_FOUND);
+      }
+      return response.nutrigeneticParameters;
     } catch (error) {
       this.handleError(error);
     }
