@@ -24,5 +24,10 @@ export const UserSchema = new EntitySchema<User>({
       type: 'simple-array',
       nullable: true,
     },
+    macronutrientPreference: {
+      name: 'macronutrient_preference',
+      type: 'simple-array',
+      nullable: true,
+    },
   },
 });

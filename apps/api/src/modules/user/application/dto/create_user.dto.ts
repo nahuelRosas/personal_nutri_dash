@@ -1,4 +1,5 @@
 import { NutrigeneticParameter } from '@/modules/nutritionalRecommendation/domain/domain';
+import { MacronutrientPreference } from '@/modules/productRecommendation/domain/domain';
 import {
   IsEmail,
   IsEnum,
@@ -19,4 +20,8 @@ export class CreateUserDto {
   @IsOptional()
   @IsEnum(NutrigeneticParameter, { each: true })
   nutrigeneticParameters?: NutrigeneticParameter[];
+
+  @IsOptional()
+  @IsEnum(MacronutrientPreference, { each: true })
+  macronutrientPreference?: MacronutrientPreference[];
 }

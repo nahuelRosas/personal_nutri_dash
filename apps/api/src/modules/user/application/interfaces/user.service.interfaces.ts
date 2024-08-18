@@ -3,7 +3,8 @@ import { IPromiseResponse } from '@/common/response_service/interface/response.i
 import { User } from '../../domain/user.domain';
 import { UpdateUserDto } from '../dto/update_user.dto';
 import { IUpdateUserResponse } from './user.common.interfaces';
-import type { NutrigeneticParameter } from '@/modules/nutritionalRecommendation/domain/domain';
+import { NutrigeneticParameter } from '@/modules/nutritionalRecommendation/domain/domain';
+import { MacronutrientPreference } from '@/modules/productRecommendation/domain/domain';
 
 export const USER_SERVICE = 'USER_SERVICE';
 
@@ -20,4 +21,5 @@ export interface IUserService {
   ): IPromiseResponse<IUpdateUserResponse>;
   findAllByEmails(emails: string[]): IPromiseResponse<User[]>;
   getNutrigeneticParameters(user: User): Promise<NutrigeneticParameter[]>;
+  getMacronutrientPreference(user: User): Promise<MacronutrientPreference[]>;
 }

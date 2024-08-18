@@ -317,6 +317,7 @@ describe('Auth - [/auth]', () => {
             email: 'admin@test.com',
             externalId: '00000000-0000-0000-0000-00000000000X',
             nutrigeneticParameters: null,
+            macronutrientPreference: null,
           },
         });
       });
@@ -592,6 +593,7 @@ describe('Auth - [/auth]', () => {
               id: expect.any(String),
               updatedAt: expect.any(String),
               nutrigeneticParameters: null,
+              macronutrientPreference: null,
             },
           },
         });
