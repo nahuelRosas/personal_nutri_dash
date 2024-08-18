@@ -65,7 +65,7 @@ export class NutritionalFoodRecommendationService {
     limit?: number,
   ) {
     const nutriGeneticProfile =
-      await this.userService.getNutrigeneticParameters(user);
+      (await this.userService.getNutrigeneticParameters(user)) ?? [];
     const response = await this.searchFoodsByParameters(
       nutriGeneticProfile,
       pageNumber,
