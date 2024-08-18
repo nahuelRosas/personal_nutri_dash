@@ -20,7 +20,7 @@ import { AccessToken } from '../application/decorator/accessToken.decorator';
 import { ChangePasswordDto } from '../application/dto/change_password.dto';
 
 @Controller('auth')
-@ApiTags('auth')
+@ApiTags('Auth')
 @Auth(AuthType.None)
 export class AuthenticationController {
   constructor(private authenticationService: AuthenticationService) {}
