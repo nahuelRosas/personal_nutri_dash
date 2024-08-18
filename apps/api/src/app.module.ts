@@ -10,6 +10,7 @@ import { CommonModule } from './common/common.module';
 import { AuthenticationModule } from './modules/auth/authentication.module';
 import { UserModule } from './modules/user/user.module';
 import { NutritionalFoodRecommendationModule } from './modules/nutritionalRecommendation/nutritionalFoodRecommendation.module';
+import { ProductRecommendationModule } from './modules/productRecommendation/productRecommendation.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { NutritionalFoodRecommendationModule } from './modules/nutritionalRecomm
     CommonModule,
     UserModule,
     NutritionalFoodRecommendationModule,
+    ProductRecommendationModule,
   ],
   controllers: [],
   providers: [],
