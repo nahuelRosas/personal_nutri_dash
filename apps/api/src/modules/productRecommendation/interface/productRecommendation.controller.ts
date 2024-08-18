@@ -25,7 +25,7 @@ export class ProductRecommendationController {
         params.macronutrientPreference,
         params.pageNumber,
         params.randomize,
-        params.limit ?? 10,
+        params.limit ?? 9,
       );
     return results;
   }
@@ -40,7 +40,7 @@ export class ProductRecommendationController {
         params.macronutrientPreferences,
         params.pageNumber,
         params.randomize,
-        params.limit ?? 10,
+        params.limit ?? 9,
       );
     return results;
   }
@@ -56,7 +56,7 @@ export class ProductRecommendationController {
         user.payload,
         params.pageNumber,
         params.randomize,
-        params.limit ?? 10,
+        params.limit ?? 9,
       );
     return results;
   }

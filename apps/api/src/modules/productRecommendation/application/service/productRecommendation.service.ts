@@ -130,7 +130,6 @@ export class ProductRecommendationService {
         },
       });
     } catch (error) {
-      console.log(error);
       this.handleApiError(error);
     }
   }
