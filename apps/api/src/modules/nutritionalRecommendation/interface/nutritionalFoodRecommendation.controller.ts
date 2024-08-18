@@ -8,6 +8,7 @@ import { IResponse } from '@/common/response_service/interface/response.interfac
 import { FoodRecommendationParamsDto } from '../application/dto/foodRecommendationParams.dto';
 import { FoodRecommendationMultipleParamsDto } from '../application/dto/foodRecommendationMultipleParams.dto ';
 import { UserFoodRecommendationParamsDto } from '../application/dto/userFoodRecommendationParams.dto';
+import { FilteredResponseDto } from '@/modules/productRecommendation/application/dto/filtered-response.dto';
 
 @Controller('food-recommendations')
 export class NutritionalRecommendationController {
@@ -23,7 +24,7 @@ export class NutritionalRecommendationController {
         params.nutrigeneticParameter,
         params.pageNumber,
         params.randomize,
-        params.limit ?? 10,
+        params.limit || 9,
       );
     return results;
   }
@@ -38,7 +39,7 @@ export class NutritionalRecommendationController {
         params.nutrigeneticParameter,
         params.pageNumber,
         params.randomize,
-        params.limit ?? 10,
+        params.limit || 9,
       );
     return results;
   }
@@ -48,14 +49,21 @@ export class NutritionalRecommendationController {
   async getFoodRecommendationsForUser(
     @Query() params: UserFoodRecommendationParamsDto,
     @CurrentUser() user: IResponse<User>,
-  ) {
+  ): Promise<
+    IResponse<{
+      recommendedFoods: FilteredResponseDto;
+      avoidedFoods: FilteredResponseDto;
+      user: { id: string; email: string; externalId: string };
+    }>
+  > {
     const results =
       await this.foodRecommendationService.searchFoodsForUserProfile(
         user.payload,
         params.pageNumber,
         params.randomize,
-        params.limit ?? 10,
+        params.limit || 9,
       );
+
     return results;
   }
 }
