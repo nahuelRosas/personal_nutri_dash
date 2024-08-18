@@ -1,7 +1,10 @@
 import { Body, Controller, Get, Inject, Put } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 
-import { IPromiseResponse } from '@/common/response_service/interface/response.interface';
+import {
+  IPromiseResponse,
+  IResponse,
+} from '@/common/response_service/interface/response.interface';
 
 import { CurrentUser } from '../application/decorator/current_user.decorator';
 import { UpdateUserDto } from '../application/dto/update_user.dto';
@@ -12,8 +15,11 @@ import {
   USER_SERVICE,
 } from '../application/interfaces/user.service.interfaces';
 import { User } from '../domain/user.domain';
+import { Auth } from '@/modules/auth/application/decorator/auth.decorator';
+import { AuthType } from '@/modules/auth/domain/auth_type.enum';
 
 @ApiTags('User')
+@Auth(AuthType.Bearer)
 @Controller('user')
 export class UserController implements IUserController {
   constructor(
@@ -24,13 +30,13 @@ export class UserController implements IUserController {
   @Put('/update')
   async updateUser(
     @Body() updateUserDto: UpdateUserDto,
-    @CurrentUser() user: User,
+    @CurrentUser() data: IResponse<User>,
   ): IPromiseResponse<IUpdateUserResponse> {
-    return this.userService.updateUser(updateUserDto, user);
+    return this.userService.updateUser(updateUserDto, data.payload);
   }
 
   @Get('/me')
-  async getMe(@CurrentUser() user: User): Promise<User> {
-    return user;
+  async getMe(@CurrentUser() data: IResponse<User>): IPromiseResponse<User> {
+    return data;
   }
 }
