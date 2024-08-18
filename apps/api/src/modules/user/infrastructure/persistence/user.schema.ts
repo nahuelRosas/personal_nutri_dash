@@ -22,6 +22,7 @@ export const UserSchema = new EntitySchema<User>({
     nutrigeneticParameters: {
       name: 'nutri_genetic_parameters',
       type: 'simple-array',
+      nullable: true,
     },
   },
 });

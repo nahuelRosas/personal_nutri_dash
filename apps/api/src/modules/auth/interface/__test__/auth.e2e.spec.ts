@@ -316,6 +316,7 @@ describe('Auth - [/auth]', () => {
             updatedAt: expect.any(String),
             email: 'admin@test.com',
             externalId: '00000000-0000-0000-0000-00000000000X',
+            nutrigeneticParameters: null,
           },
         });
       });
@@ -590,6 +591,7 @@ describe('Auth - [/auth]', () => {
               email: 'testing@testing.com',
               id: expect.any(String),
               updatedAt: expect.any(String),
+              nutrigeneticParameters: null,
             },
           },
         });
