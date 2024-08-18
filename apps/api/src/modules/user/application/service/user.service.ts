@@ -17,6 +17,7 @@ import {
 import { ServiceMessage } from '../message/user.message';
 import { NutrigeneticParameter } from '@/modules/nutritionalRecommendation/domain/domain';
 import { IUserService } from '../interfaces/user.service.interfaces';
+import type { MacronutrientPreference } from '@/modules/productRecommendation/domain/domain';
 
 @Injectable()
 export class UserService implements IUserService {
@@ -125,6 +126,20 @@ export class UserService implements IUserService {
         throw new NotFoundException(ServiceMessage.NOT_FOUND);
       }
       return response.nutrigeneticParameters;
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  async getMacronutrientPreference(
+    user: User,
+  ): Promise<MacronutrientPreference[]> {
+    try {
+      const response = await this.userRepository.findByEmail(user.email);
+      if (!response) {
+        throw new NotFoundException(ServiceMessage.NOT_FOUND);
+      }
+      return response.macronutrientPreference;
     } catch (error) {
       this.handleError(error);
     }
