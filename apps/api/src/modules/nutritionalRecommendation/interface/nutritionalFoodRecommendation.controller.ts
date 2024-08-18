@@ -23,7 +23,7 @@ export class NutritionalRecommendationController {
         params.nutrigeneticParameter,
         params.pageNumber,
         params.randomize,
-        params.limit,
+        params.limit ?? 10,
       );
     return results;
   }
@@ -38,7 +38,7 @@ export class NutritionalRecommendationController {
         params.nutrigeneticParameter,
         params.pageNumber,
         params.randomize,
-        params.limit,
+        params.limit ?? 10,
       );
     return results;
   }
@@ -54,7 +54,7 @@ export class NutritionalRecommendationController {
         user.payload,
         params.pageNumber,
         params.randomize,
-        params.limit,
+        params.limit ?? 10,
       );
     return results;
   }
